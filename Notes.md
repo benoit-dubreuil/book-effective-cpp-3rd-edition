@@ -6,22 +6,22 @@
 - Good interfaces are easy to use correctly and hard to use incorrectly. You should strive for these characteristics in all your interfaces.
 - Ways to facilitate correct use include consistency in interfaces and behavioral compatibility with built-in types.
 - Ways to prevent errors include creating new types, restricting operations on types, constraining object values, and eliminating client resource management responsibilities.
-- std::shared_ptr supports custom deleters. This prevents the cross-DLL problem (automatically handled).
+- `std::shared_ptr` supports custom deleters. This prevents the cross-DLL problem (automatically handled).
 - Built-in types and STL iterator and function object types should usually be passed to by value.
 - Exception-safe functions leak no resources and allow no data structures to become corrupted, even when exceptions are thrown. Such functions offer the basic, strong, or nothrow guarantees.
-- The strong guarantee can often be implemented via copy-and-swap, but the strong guarantee is not practical for all functions.
+- The strong guarantee can often be implemented via *copy-and-swap*, but the strong guarantee is not practical for all functions.
 - A function can usually offer a guarantee no stronger than the weakest guarantee of the functions it calls.
 - Depend on class declarations instead of class definitions whenever you can. Note that you never need a class definition to declare a function using that class, not even if the function passes or returns the class type by value.
 - The general idea behind minimizing compilation dependencies is to depend on declarations instead of definitions. Two approaches based on this idea are Handle classes and Interface classes.
 - Library header files should exist in full and declaration-only forms. This applies regardless of whether templates are involved.
-- Public inheritance means “is-a.” Everything that applies to base classes must also apply to derived classes, because every derived class object is a base class object.
+- Public inheritance means *IS-A*. Everything that applies to base classes must also apply to derived classes, because every derived class object is a base class object.
 - Names in derived classes hide names in base classes. Under public inheritance, this is never desirable.
 - To make hidden names visible again, employ using declarations or forwarding functions.
 - Never redefine an inherited non-virtual function.
 - Never redefine an inherited default parameter value, because default parameter values are statically bound, while virtual functions — the only functions you should be redefining — are dynamically bound.
-- In the application domain, composition means has-a. In the implementation domain, it means is-implemented-in-terms-of.
-- Private inheritance means is-implemented-in-terms of. It’s usually inferior to composition, but it makes sense when a derived class needs access to protected base class members or needs to redefine inherited virtual functions.
+- In the application domain, composition means *HAS-A*. In the implementation domain, it means is-implemented-in-terms-of.
+- Private inheritance means *is-implemented-in-terms of*. It’s usually inferior to composition, but it makes sense when a derived class needs access to protected base class members or needs to redefine inherited virtual functions.
 - Virtual inheritance imposes costs in size, speed, and complexity of initialization and assignment. It’s most practical when virtual base classes have no data.
 - Both classes and templates support interfaces and polymorphism.
 	- For template parameters, interfaces are implicit and based on valid expressions. Polymorphism occurs during compilation through template instantiation and function overloading resolution.
-- Use typename to identify nested dependent type names, except in base class lists or as a base class identifier in a member initialization list.
+- Use `typename` to identify nested dependent type names, except in base class lists or as a base class identifier in a member initialization list.
